@@ -1,19 +1,18 @@
-const inquirer = require('inquirer');
 const bsv = require('bsv');
-const bip39 = require('bip39');
+const inquirer = require('inquirer');
+const Mnemonic = require('bsv-mnemonic');
 
-const questions = [
-  {
-    type: 'input',
-    name: 'privateKey',
-    message: 'Enter your private key:'
-  }
-];
-
-inquirer.prompt(questions)
-  .then(answers => {
-    const privateKey = bsv.PrivateKey.fromString(answers.privateKey);
-    const seedPhrase = bip39.entropyToMnemonic(privateKey.toBuffer());
-    console.log('Your BIP39 seed phrase is:', seedPhrase);
-  })
-  .catch(error => console.error(error));
+inquirer
+  .prompt([
+    {
+      type: 'password',
+      message: 'Enter your private key:',
+      name: 'privKey',
+      mask: '*',
+    },
+  ])
+  .then((answers) => {
+    const privKey = bsv.PrivateKey.fromString(answers.privKey);
+    const seed = Mnemonic.fromSeed(privKey.toBuffer(), Mnemonic.Words.ENGLISH).toString();
+    console.log('Seed phrase:', seed.toString());
+  });

@@ -1,0 +1,28 @@
+{
+  "name": "bsv-privkey2seed",
+  "version": "1.0.0",
+  "description": "Turns an extended privkey into a seedphrase",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abeldantas/bsv-privkey2seed.git"
+  },
+  "keywords": [
+    "bsv",
+    "bitcoin"
+  ],
+  "author": "abeldantas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abeldantas/bsv-privkey2seed/issues"
+  },
+  "homepage": "https://github.com/abeldantas/bsv-privkey2seed#readme",
+  "dependencies": {
+    "bsv": "^1.5.6",
+    "bsv-mnemonic": "^1.7.6",
+    "inquirer": "^8.2.5"
+  }
+}
